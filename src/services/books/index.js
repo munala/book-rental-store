@@ -6,7 +6,7 @@ const instance = axios.create({
   baseURL: API_URL
 });
 
-export const getAllBooks = async bookParams => {
+export const getAllBooksList = async bookParams => {
   try {
     const queryString = generateQueryStringFromParams(bookParams);
 
@@ -18,7 +18,7 @@ export const getAllBooks = async bookParams => {
   }
 };
 
-export const getBook = async id => {
+export const getSingleBook = async id => {
   try {
     const book = await instance.get(`/books/${id}`);
 
