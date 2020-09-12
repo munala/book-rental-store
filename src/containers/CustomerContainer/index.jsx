@@ -1,35 +1,26 @@
-import React, { useReducer } from "react";
-import PropTypes from "prop-types";
-import customerReducer from "../context/reducers/customer";
-import { initialState } from "../context/state/customer";
-import { registerCustomer, loginCustomer } from "../services/customer";
-import { LOGOUT } from "../constants/actionTypes";
+import React from "react";
+import useCustomer from "../hooks/useCustomer";
+import useError from "../hooks/useError";
+import useLoading from "../hooks/useLoading";
 import AuthComponent from "../components/AuthComponent";
 
-const CustomerContainer = ({ error, loading }) => {
-  const [state, dispatch] = useReducer(customerReducer, initialState);
-
-  const login = customer => loginCustomer(dispatch, customer);
-
-  const register = customer => registerCustomer(dispatch, customer);
-
-  const logout = () => dispatch({ action: LOGOUT });
+const CustomerContainer = () => {
+  const { customer, login, register, logout } = useCustomer();
+  const { error, setError } = useError();
+  const { loading, setLoading } = useLoading();
 
   return (
     <AuthComponent
-      customer={state}
+      customer={customer}
       login={login}
       register={register}
       logout={logout}
       error={error}
+      setError={setError}
+      setLoading={setLoading}
       loading={loading}
     />
   );
-};
-
-CustomerContainer.propTypes = {
-  error: PropTypes.string,
-  loading: PropTypes.boolean
 };
 
 export default CustomerContainer;
