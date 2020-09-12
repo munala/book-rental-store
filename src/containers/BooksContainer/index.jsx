@@ -1,21 +1,24 @@
-import React, { useReducer } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import booksReducer from "../context/reducers/books";
-import { initialState } from "../../context/state/books";
-import { getAllBooksList } from "../../services/books";
+import useError from "../hooks/useError";
+import useLoading from "../hooks/useLoading";
+import useBooks from "../hooks/useBooks";
+
 import BooksComponent from "../../components/BooksComponent";
 
-const BooksContainer = ({ error, loading }) => {
-  const [state, dispatch] = useReducer(booksReducer, initialState);
-
-  const getBooks = bookParams => getAllBooksList(dispatch, bookParams);
+const BooksContainer = () => {
+  const { books, getBooks } = useBooks();
+  const { error, setError } = useError();
+  const { loading, setLoading } = useLoading();
 
   return (
     <BooksComponent
-      books={state}
+      books={books}
       getBooks={getBooks}
       error={error}
       loading={loading}
+      setError={setError}
+      setLoading={setLoading}
     />
   );
 };

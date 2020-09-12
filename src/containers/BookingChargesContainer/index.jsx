@@ -1,10 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import useError from "../hooks/useError";
+import useLoading from "../hooks/useLoading";
 import { DAILY_RENTAL } from "../../constants/rentals";
 import BookingChargesComponent from "../../components/BookingChargesComponent";
 
-const BookingChargesContainer = ({ error, loading }) => {
+const BookingChargesContainer = () => {
+  const { error, setError } = useError();
+  const { loading, setLoading } = useLoading();
+
   const getRental = ({ quantity, numberOfDays }) => {
     return quantity * numberOfDays * DAILY_RENTAL;
   };
@@ -14,6 +18,8 @@ const BookingChargesContainer = ({ error, loading }) => {
       getRental={getRental}
       error={error}
       loading={loading}
+      setError={setError}
+      setLoading={setLoading}
     />
   );
 };
