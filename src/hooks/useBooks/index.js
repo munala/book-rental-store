@@ -1,6 +1,6 @@
 import { useReducer } from "react";
-import { initialState } from "../context/state/books";
-import booksReducer from "../context/reducers/books";
+import { initialState } from "../../context/state/books";
+import booksReducer from "../../context/reducers/books";
 import { getAllBooksList } from "../../services/books";
 
 const useBooks = () => {

@@ -1,7 +1,7 @@
 import { useReducer } from "react";
-import { initialState } from "../context/state/error";
-import errorReducer from "../context/reducers/error";
-import { SET_ERROR } from "../constants/actionTypes";
+import { initialState } from "../../context/state/error";
+import errorReducer from "../../context/reducers/error";
+import { SET_ERROR } from "../../constants/actionTypes";
 
 const useError = () => {
   const [error, dispatch] = useReducer(errorReducer, initialState);

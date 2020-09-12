@@ -1,5 +1,5 @@
-import * as actionTypes from "../../constants/actionTypes";
-import { initialState } from "./state";
+import * as actionTypes from "../../../constants/actionTypes";
+import { initialState } from "../../state/error";
 
 export default (state = initialState, action) => {
   const { type, payload } = action;

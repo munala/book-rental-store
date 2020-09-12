@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Redirect, Route } from "react-router-dom";
-import useCustomer from "../hooks/customer";
+import useCustomer from "../hooks/useCustomer";
 
 const ProtectedRoute = props => {
   const { customer } = useCustomer();
