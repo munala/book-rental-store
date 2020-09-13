@@ -8,25 +8,23 @@ const AppModal = props => {
 
   return (
     <Modal animation={false} show={show} onHide={onClose}>
-      <Modal.Dialog>
-        <Modal.Header closeButton>
-          <Modal.Title>{title}</Modal.Title>
-        </Modal.Header>
+      <Modal.Header closeButton>
+        <Modal.Title>{title}</Modal.Title>
+      </Modal.Header>
 
-        <Modal.Body>{children ? children() : message}</Modal.Body>
+      <Modal.Body>{children ? children() : message}</Modal.Body>
 
-        <Modal.Footer>
-          {buttons?.map((button, index) => (
-            <Button
-              key={index}
-              variant={button.color || "primary"}
-              onClick={button.action}
-            >
-              {button.text}
-            </Button>
-          ))}
-        </Modal.Footer>
-      </Modal.Dialog>
+      <Modal.Footer>
+        {buttons?.map((button, index) => (
+          <Button
+            key={index}
+            variant={button.color || "primary"}
+            onClick={button.action}
+          >
+            {button.text}
+          </Button>
+        ))}
+      </Modal.Footer>
     </Modal>
   );
 };

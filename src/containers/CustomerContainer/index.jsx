@@ -48,7 +48,7 @@ const CustomerContainer = () => {
       });
 
       setMessage(
-        `Your registration was successful. You customer ID is ${newCustomer.id}. You will need it to login.`
+        `Registration was successful. Your customer ID is ${newCustomer.id}. You will need it when login next time.`
       );
 
       setCustomer(newCustomer);

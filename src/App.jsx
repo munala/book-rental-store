@@ -13,6 +13,8 @@ import LoadingContext, {
 import customerReducer from "./context/reducers/customer";
 import errorReducer from "./context/reducers/error";
 import loadingReducer from "./context/reducers/loading";
+import ErrorWrapper from "./wrappers/ErrorWrapper";
+import LoadingWrapper from "./wrappers/LoadingWrapper";
 
 const App = () => {
   const [customer, customerDispatch] = useReducer(
@@ -32,7 +34,11 @@ const App = () => {
       <ErrorContext.Provider value={{ error, errorDispatch }}>
         <LoadingContext.Provider value={{ loading, loadingDispatch }}>
           <div className="App container">
-            <Routes />
+            <ErrorWrapper>
+              <LoadingWrapper>
+                <Routes />
+              </LoadingWrapper>
+            </ErrorWrapper>
           </div>
         </LoadingContext.Provider>
       </ErrorContext.Provider>

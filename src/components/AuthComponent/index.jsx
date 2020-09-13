@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import AppModal from "../common/AppModal";
 import { EMAIL_REGEX } from "../../constants/others";
+import "./styles.css";
 
 const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
   const pageText = loginMode ? "Login" : "Register";
@@ -75,7 +77,7 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
           className="row justify-content-center align-items-center"
         >
           <div id="login-column" className="col-md-6">
-            <div id="login-box" className="col-md-12">
+            <div id="login-box">
               <Form>
                 <h3 className="text-center text-info">{pageText}</h3>
                 <Form.Group>
@@ -117,9 +119,9 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
                     {pageText}
                   </Button>
 
-                  <a href={`/${optionRoute}`} className="text-info">
+                  <Link to={`/${optionRoute}`} className="text-info">
                     {optionButtonText}
-                  </a>
+                  </Link>
                 </div>
               </Form>
             </div>
@@ -129,7 +131,7 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
       <AppModal
         show={!!message}
         message={message}
-        modalButtons={modalButtons}
+        buttons={modalButtons}
         onClose={() => setMessage(null)}
         title="Success"
       />
