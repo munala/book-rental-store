@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Form from "react-bootstrap/Form";
-import AppModal from "../common/AppModal";
 import Button from "react-bootstrap/Button";
+import AppModal from "../common/AppModal";
+import { EMAIL_REGEX } from "../../constants/others";
 
 const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
   const pageText = loginMode ? "Login" : "Register";
@@ -12,6 +13,18 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
   const [email, setEmail] = useState("");
   const [customerId, setCustomerId] = useState("");
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const { email: emailError, ...otherErrors } = errors;
+
+    setErrors({ ...otherErrors });
+  }, [email]);
+
+  useEffect(() => {
+    const { customerId: customerIdError, ...otherErrors } = errors;
+
+    setErrors({ ...otherErrors });
+  }, [customerId]);
 
   const modalButtons = [
     {
@@ -23,16 +36,16 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
   const validateForm = () => {
     const errorObject = {};
 
+    const emailRegex = RegExp(EMAIL_REGEX);
+
     if (!email) {
       errorObject.email = "Email is required";
-    } else {
-      delete errorObject.email;
+    } else if (!emailRegex.test(email.toLowerCase())) {
+      errorObject.email = "Invalid email";
     }
 
     if (loginMode && !customerId) {
       errorObject.customerId = "Customer ID is required";
-    } else {
-      delete errorObject.customerId;
     }
 
     if (Object.keys(errorObject).length) {

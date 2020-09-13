@@ -7,7 +7,7 @@ const AppModal = props => {
   const { title, buttons, onClose, message, children, show } = props;
 
   return (
-    <Modal show={show} onHide={onClose}>
+    <Modal animation={false} show={show} onHide={onClose}>
       <Modal.Dialog>
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
