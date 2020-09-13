@@ -14,7 +14,7 @@ export const getAllGenres = async genreParams => {
 
     return data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.response?.data?.message || error.message);
   }
 };
 
@@ -24,6 +24,6 @@ export const getGenre = async id => {
 
     return data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.response?.data?.message || error.message);
   }
 };
