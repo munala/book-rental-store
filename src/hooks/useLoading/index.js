@@ -6,7 +6,7 @@ const useLoading = () => {
   const { loading, loadingDispatch: dispatch } = useContext(LoadingContext);
 
   const setLoading = loadingMessage => {
-    dispatch({ action: SET_LOADING, payload: loadingMessage });
+    dispatch({ type: SET_LOADING, payload: loadingMessage });
   };
 
   return { loading, setLoading };

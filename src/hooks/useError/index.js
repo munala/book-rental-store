@@ -6,7 +6,7 @@ const useError = () => {
   const { error, errorDispatch: dispatch } = useContext(ErrorContext);
 
   const setError = errorMessage => {
-    dispatch({ action: SET_ERROR, payload: errorMessage });
+    dispatch({ type: SET_ERROR, payload: errorMessage });
   };
 
   return { error, setError };

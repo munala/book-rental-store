@@ -5,7 +5,7 @@ import {
   Route,
   Switch
 } from "react-router-dom";
-import ProtectedRoute from "../hoc/ProtectedRoute";
+import ProtectedRoute from "../wrappers/ProtectedRoute";
 import BooksPage from "../pages/Books";
 import RegisterPage from "../pages/Register";
 import LoginPage from "../pages/Login";
