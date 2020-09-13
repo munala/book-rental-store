@@ -4,7 +4,11 @@ import Routes from "./routes";
 import CustomerContext, {
   initialState as initialCustomerState
 } from "./context/state/customer";
+import ErrorContext, {
+  initialState as initialErrorState
+} from "./context/state/customer";
 import customerReducer from "./context/reducers/customer";
+import errorReducer from "./context/reducers/error";
 
 const App = () => {
   const [customer, customerDispatch] = useReducer(
@@ -12,11 +16,15 @@ const App = () => {
     initialCustomerState
   );
 
+  const [error, errorDispatch] = useReducer(errorReducer, initialErrorState);
+
   return (
     <CustomerContext.Provider value={{ customer, customerDispatch }}>
-      <div className="App container">
-        <Routes />
-      </div>
+      <ErrorContext.Provider value={{ error, errorDispatch }}>
+        <div className="App container">
+          <Routes />
+        </div>
+      </ErrorContext.Provider>
     </CustomerContext.Provider>
   );
 };

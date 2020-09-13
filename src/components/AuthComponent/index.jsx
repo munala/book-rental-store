@@ -22,7 +22,7 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
 
     onSubmit({
       email,
-      customerId
+      id: customerId
     });
   };
 

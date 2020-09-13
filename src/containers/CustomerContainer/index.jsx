@@ -14,7 +14,7 @@ const CustomerContainer = () => {
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
-    if (customer.id) {
+    if (customer?.id) {
       history.push("books");
     }
   }, [customer]);
@@ -25,7 +25,13 @@ const CustomerContainer = () => {
     try {
       const [loggenInCustomer] = await customerState.login(customerData);
 
-      setCustomer(loggenInCustomer);
+      if (loggenInCustomer) {
+        setCustomer(loggenInCustomer);
+
+        return;
+      }
+
+      setError("Wrong email and/or customer ID.");
     } catch (error) {
       setError(error);
     } finally {
