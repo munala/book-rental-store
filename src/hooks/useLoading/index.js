@@ -1,13 +1,12 @@
-import { useReducer } from "react";
-import { initialState } from "../../context/state/loading";
-import loadingReducer from "../../context/reducers/loading";
+import { useContext } from "react";
+import LoadingContext from "../../context/state/loading";
 import { SET_LOADING } from "../../constants/actionTypes";
 
 const useLoading = () => {
-  const [loading, dispatch] = useReducer(loadingReducer, initialState);
+  const { loading, loadingDispatch: dispatch } = useContext(LoadingContext);
 
-  const setLoading = loadingState => {
-    dispatch({ action: SET_LOADING, payload: loadingState });
+  const setLoading = loadingMessage => {
+    dispatch({ action: SET_LOADING, payload: loadingMessage });
   };
 
   return { loading, setLoading };
