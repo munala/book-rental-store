@@ -10,9 +10,13 @@ import ErrorContext, {
 import LoadingContext, {
   initialState as initialLoadingState
 } from "./context/state/loading";
+import BooksContext, {
+  initialState as initialBooksState
+} from "./context/state/books";
 import customerReducer from "./context/reducers/customer";
 import errorReducer from "./context/reducers/error";
 import loadingReducer from "./context/reducers/loading";
+import booksReducer from "./context/reducers/books";
 import ErrorWrapper from "./wrappers/ErrorWrapper";
 import LoadingWrapper from "./wrappers/LoadingWrapper";
 
@@ -29,17 +33,21 @@ const App = () => {
     initialLoadingState
   );
 
+  const [books, booksDispatch] = useReducer(booksReducer, initialBooksState);
+
   return (
     <CustomerContext.Provider value={{ customer, customerDispatch }}>
       <ErrorContext.Provider value={{ error, errorDispatch }}>
         <LoadingContext.Provider value={{ loading, loadingDispatch }}>
-          <div className="App container">
-            <ErrorWrapper>
-              <LoadingWrapper>
-                <Routes />
-              </LoadingWrapper>
-            </ErrorWrapper>
-          </div>
+          <BooksContext.Provider value={{ books, booksDispatch }}>
+            <div className="App container">
+              <ErrorWrapper>
+                <LoadingWrapper>
+                  <Routes />
+                </LoadingWrapper>
+              </ErrorWrapper>
+            </div>
+          </BooksContext.Provider>
         </LoadingContext.Provider>
       </ErrorContext.Provider>
     </CustomerContext.Provider>

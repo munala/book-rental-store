@@ -1,14 +1,18 @@
-import { useReducer } from "react";
-import { initialState } from "../../context/state/books";
-import booksReducer from "../../context/reducers/books";
+import { useContext } from "react";
+import BooksContext from "../../context/state/books";
 import { getAllBooksList } from "../../services/books";
+import { SET_BOOKS } from "../../constants/actionTypes";
 
 const useBooks = () => {
-  const [books, dispatch] = useReducer(booksReducer, initialState);
+  const { books, booksDispatch: dispatch } = useContext(BooksContext);
 
-  const getBooks = bookParams => getAllBooksList(dispatch, bookParams);
+  const getBooks = bookParams => getAllBooksList(bookParams);
 
-  return { books, getBooks };
+  const setBooks = books => {
+    dispatch({ type: SET_BOOKS, payload: books });
+  };
+
+  return { books, getBooks, setBooks };
 };
 
 export default useBooks;

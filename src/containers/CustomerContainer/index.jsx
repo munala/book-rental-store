@@ -7,8 +7,8 @@ import AuthComponent from "../../components/AuthComponent";
 
 const CustomerContainer = () => {
   const { customer, logout, setCustomer, ...customerState } = useCustomer();
-  const { error, setError } = useError();
-  const { loading, setLoading } = useLoading();
+  const { setError } = useError();
+  const { setLoading } = useLoading();
   const { pathname } = useLocation();
   const history = useHistory();
   const [message, setMessage] = useState(null);
@@ -64,10 +64,6 @@ const CustomerContainer = () => {
       customer={customer}
       logout={logout}
       onSubmit={pathname === "/login" ? login : register}
-      error={error}
-      setError={setError}
-      setLoading={setLoading}
-      loading={loading}
       loginMode={pathname === "/login"}
       message={message}
       setMessage={setMessage}

@@ -10,19 +10,23 @@ import "./styles.css";
 const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
   const pageText = loginMode ? "Login" : "Register";
   const optionButtonText = loginMode ? "Register" : "Login";
-  const optionRoute = loginMode ? "register" : "login";
+  const optionRoute = optionButtonText.toLowerCase();
 
   const [email, setEmail] = useState("");
   const [customerId, setCustomerId] = useState("");
   const [errors, setErrors] = useState({});
 
+  // clear email error
   useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
     const { email: emailError, ...otherErrors } = errors;
 
     setErrors({ ...otherErrors });
   }, [email]);
 
+  // clear customer id error
   useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
     const { customerId: customerIdError, ...otherErrors } = errors;
 
     setErrors({ ...otherErrors });
@@ -57,9 +61,7 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
     return Object.keys(errorObject).length === 0;
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-
+  const handleSubmit = () => {
     if (validateForm()) {
       onSubmit({
         email,
@@ -71,6 +73,7 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
   return (
     <div id="login">
       <h3 className="text-center text-white pt-5">Book Rental Store</h3>
+
       <div className="container">
         <div
           id="login-row"
@@ -80,10 +83,12 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
             <div id="login-box">
               <Form>
                 <h3 className="text-center text-info">{pageText}</h3>
+
                 <Form.Group>
                   <Form.Label htmlFor="email" className="text-info">
                     Email:
                   </Form.Label>
+
                   <Form.Control
                     type="email"
                     value={email}
@@ -91,6 +96,7 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
                     onChange={({ target: { value } }) => setEmail(value)}
                     isInvalid={!!errors.email}
                   />
+
                   <Form.Control.Feedback type="invalid">
                     {errors.email}
                   </Form.Control.Feedback>
@@ -101,6 +107,7 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
                     <Form.Label htmlFor="customer-id" className="text-info">
                       Customer ID:
                     </Form.Label>
+
                     <Form.Control
                       type="password"
                       value={customerId}
@@ -108,6 +115,7 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
                       onChange={({ target: { value } }) => setCustomerId(value)}
                       isInvalid={!!errors.customerId}
                     />
+
                     <Form.Control.Feedback type="invalid">
                       {errors.customerId}
                     </Form.Control.Feedback>
@@ -128,6 +136,7 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
           </div>
         </div>
       </div>
+
       <AppModal
         show={!!message}
         message={message}
