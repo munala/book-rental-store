@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 import { initialState } from "../../context/state/loading";
-import loadingReducer from "..../context/reducers/loading";
+import loadingReducer from "../../context/reducers/loading";
 import { SET_LOADING } from "../../constants/actionTypes";
 
 const useLoading = () => {

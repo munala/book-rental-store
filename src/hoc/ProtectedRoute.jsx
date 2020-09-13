@@ -12,7 +12,7 @@ const ProtectedRoute = props => {
     <Route
       path={path}
       render={props =>
-        customer.id ? <Component {...props} /> : <Redirect to="/auth" />
+        customer.id ? <Component {...props} /> : <Redirect to="/login" />
       }
       exact={exact}
     />
@@ -21,7 +21,7 @@ const ProtectedRoute = props => {
 
 ProtectedRoute.propTypes = {
   path: PropTypes.string.isRequired,
-  exact: PropTypes.string,
+  exact: PropTypes.bool,
   Component: PropTypes.elementType.isRequired
 };
 

@@ -10,9 +10,9 @@ export const getAllGenres = async genreParams => {
   try {
     const queryString = generateQueryStringFromParams(genreParams);
 
-    const genre = await instance.get(`/genres${queryString}`);
+    const { data } = await instance.get(`/genres${queryString}`);
 
-    return genre;
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -20,9 +20,9 @@ export const getAllGenres = async genreParams => {
 
 export const getGenre = async id => {
   try {
-    const genre = await instance.get(`/genres/${id}`);
+    const { data } = await instance.get(`/genres/${id}`);
 
-    return genre;
+    return data;
   } catch (error) {
     console.log(error);
   }

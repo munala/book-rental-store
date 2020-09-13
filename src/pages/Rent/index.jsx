@@ -1,7 +1,7 @@
 import React from "react";
 
 const RentPage = () => {
-  return <div />;
+  return <div>Rent</div>;
 };
 
 export default RentPage;

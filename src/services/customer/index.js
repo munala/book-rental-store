@@ -1,24 +1,29 @@
 import axios from "axios";
 import { API_URL } from "../../constants/services";
+import { generateQueryStringFromParams } from "../../utils";
 
 const instance = axios.create({
   baseURL: API_URL
 });
 
-export const registerCustomer = async (dispatch, customer) => {
+export const registerCustomer = async customer => {
   try {
-    const response = instance.post("/customers", customer);
-    return response;
+    const { data } = await instance.post("/customers", customer);
+
+    return data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.response?.data?.message || error.message);
   }
 };
 
-export const loginCustomer = async (dispatch, customer) => {
+export const loginCustomer = async customerCredentials => {
   try {
-    const response = instance.get("/customers", customer);
-    return response;
+    const queryString = generateQueryStringFromParams(customerCredentials);
+
+    const { data } = await instance.get(`/customers${queryString}`);
+
+    return data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.response?.data?.message || error.message);
   }
 };

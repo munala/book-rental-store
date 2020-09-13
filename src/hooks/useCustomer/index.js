@@ -1,19 +1,22 @@
-import { useReducer } from "react";
-import { initialState } from "../../context/state/customer";
-import customerReducer from "../../context/reducers/customer";
+import { useContext } from "react";
+import CustomerContext from "../../context/state/customer";
 import { registerCustomer, loginCustomer } from "../../services/customer";
-import { LOGOUT } from "../../constants/actionTypes";
+import { LOGIN } from "../../constants/actionTypes";
 
 const useCustomer = () => {
-  const [customer, dispatch] = useReducer(customerReducer, initialState);
+  const { customer, customerDispatch: dispatch } = useContext(CustomerContext);
 
-  const login = customer => loginCustomer(dispatch, customer);
+  const login = customerCredentials => loginCustomer(customerCredentials);
 
-  const register = customer => registerCustomer(dispatch, customer);
+  const register = customerCredentials => registerCustomer(customerCredentials);
 
-  const logout = () => dispatch({ action: LOGOUT });
+  const setCustomer = customerDetails => {
+    dispatch({ type: LOGIN, payload: customerDetails });
+  };
 
-  return { customer, login, register, logout };
+  const logout = () => {};
+
+  return { customer, login, register, logout, setCustomer };
 };
 
 export default useCustomer;

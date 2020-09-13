@@ -10,9 +10,9 @@ export const getAllAuthors = async authorParams => {
   try {
     const queryString = generateQueryStringFromParams(authorParams);
 
-    const author = await instance.get(`/authors${queryString}`);
+    const { data } = await instance.get(`/authors${queryString}`);
 
-    return author;
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -20,9 +20,9 @@ export const getAllAuthors = async authorParams => {
 
 export const getAuthor = async id => {
   try {
-    const author = await instance.get(`/authors/${id}`);
+    const { data } = await instance.get(`/authors/${id}`);
 
-    return author;
+    return data;
   } catch (error) {
     console.log(error);
   }

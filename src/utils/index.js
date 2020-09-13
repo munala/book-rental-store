@@ -5,7 +5,7 @@ export const generateQueryStringFromParams = queryParams => {
     const value = queryParams[key];
 
     if (value) {
-      queryString = `${index === 0 ? "?" : ""}${key}=${value}${
+      queryString = `${queryString}${index === 0 ? "?" : ""}${key}=${value}${
         index < keys.length - 1 ? "&" : ""
       }`;
     }

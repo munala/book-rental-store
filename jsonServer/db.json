@@ -1,5 +1,14 @@
 {
-  "customers": [],
+  "customers": [
+    {
+      "id": 1,
+      "email": "munalaoliverngoitsi@gmail.com"
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 2
+    }
+  ],
   "books": [
     {
       "id": 1,

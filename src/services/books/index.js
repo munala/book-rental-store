@@ -10,9 +10,9 @@ export const getAllBooksList = async bookParams => {
   try {
     const queryString = generateQueryStringFromParams(bookParams);
 
-    const book = await instance.get(`/books${queryString}`);
+    const { data } = await instance.get(`/books${queryString}`);
 
-    return book;
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -20,9 +20,9 @@ export const getAllBooksList = async bookParams => {
 
 export const getSingleBook = async id => {
   try {
-    const book = await instance.get(`/books/${id}`);
+    const { data } = await instance.get(`/books/${id}`);
 
-    return book;
+    return data;
   } catch (error) {
     console.log(error);
   }

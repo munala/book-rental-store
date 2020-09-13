@@ -1,5 +1,5 @@
 import * as actionTypes from "../../../constants/actionTypes";
-import { initialState } from "../../stat/loading";
+import { initialState } from "../../state/loading";
 
 export default (state = initialState, action) => {
   const { type, payload } = action;

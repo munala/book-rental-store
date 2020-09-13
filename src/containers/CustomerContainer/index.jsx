@@ -1,24 +1,70 @@
-import React from "react";
-import useCustomer from "../hooks/useCustomer";
-import useError from "../hooks/useError";
-import useLoading from "../hooks/useLoading";
-import AuthComponent from "../components/AuthComponent";
+import React, { useState, useEffect } from "react";
+import { useLocation, useHistory } from "react-router-dom";
+import useCustomer from "../../hooks/useCustomer";
+import useError from "../../hooks/useError";
+import useLoading from "../../hooks/useLoading";
+import AuthComponent from "../../components/AuthComponent";
 
 const CustomerContainer = () => {
-  const { customer, login, register, logout } = useCustomer();
+  const { customer, logout, setCustomer, ...customerState } = useCustomer();
   const { error, setError } = useError();
   const { loading, setLoading } = useLoading();
+  const { pathname } = useLocation();
+  const history = useHistory();
+  const [message, setMessage] = useState(null);
+
+  useEffect(() => {
+    if (customer.id) {
+      history.push("books");
+    }
+  }, [customer]);
+
+  const login = async customerData => {
+    setLoading(true);
+
+    try {
+      const [loggenInCustomer] = await customerState.login(customerData);
+
+      setCustomer(loggenInCustomer);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const register = async customerData => {
+    setLoading(true);
+
+    try {
+      const newCustomer = await customerState.register({
+        email: customerData.email
+      });
+
+      setMessage(
+        `Your registration was successful. You customer ID is ${newCustomer.id}. You will need it to login.`
+      );
+
+      setCustomer(newCustomer);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <AuthComponent
       customer={customer}
-      login={login}
-      register={register}
       logout={logout}
+      onSubmit={pathname === "/login" ? login : register}
       error={error}
       setError={setError}
       setLoading={setLoading}
       loading={loading}
+      loginMode={pathname === "/login"}
+      message={message}
+      setMessage={setMessage}
     />
   );
 };
