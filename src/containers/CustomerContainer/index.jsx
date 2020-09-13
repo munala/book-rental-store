@@ -14,10 +14,10 @@ const CustomerContainer = () => {
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
-    if (customer?.id) {
+    if (customer?.id && !message) {
       history.push("books");
     }
-  }, [customer]);
+  }, [customer, message, history]);
 
   const login = async customerData => {
     setLoading(true);

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import Modal from "../common/Modal";
+import Form from "react-bootstrap/Form";
+import AppModal from "../common/AppModal";
+import Button from "react-bootstrap/Button";
 
 const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
   const pageText = loginMode ? "Login" : "Register";
@@ -9,6 +11,7 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
 
   const [email, setEmail] = useState("");
   const [customerId, setCustomerId] = useState("");
+  const [errors, setErrors] = useState({});
 
   const modalButtons = [
     {
@@ -17,13 +20,37 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
     }
   ];
 
+  const validateForm = () => {
+    const errorObject = {};
+
+    if (!email) {
+      errorObject.email = "Email is required";
+    } else {
+      delete errorObject.email;
+    }
+
+    if (loginMode && !customerId) {
+      errorObject.customerId = "Customer ID is required";
+    } else {
+      delete errorObject.customerId;
+    }
+
+    if (Object.keys(errorObject).length) {
+      setErrors(errorObject);
+    }
+
+    return Object.keys(errorObject).length === 0;
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
 
-    onSubmit({
-      email,
-      id: customerId
-    });
+    if (validateForm()) {
+      onSubmit({
+        email,
+        id: customerId
+      });
+    }
   };
 
   return (
@@ -36,67 +63,63 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
         >
           <div id="login-column" className="col-md-6">
             <div id="login-box" className="col-md-12">
-              <form id="login-form" className="form" action="" method="post">
+              <Form>
                 <h3 className="text-center text-info">{pageText}</h3>
-                <div className="form-group">
-                  <label htmlFor="email" className="text-info">
+                <Form.Group>
+                  <Form.Label htmlFor="email" className="text-info">
                     Email:
-                  </label>
-                  <br />
-                  <input
+                  </Form.Label>
+                  <Form.Control
                     type="email"
-                    name="email"
-                    id="email"
                     value={email}
-                    className="form-control"
+                    placeholder="Enter email"
                     onChange={({ target: { value } }) => setEmail(value)}
+                    isInvalid={!!errors.email}
                   />
-                </div>
+                  <Form.Control.Feedback type="invalid">
+                    {errors.email}
+                  </Form.Control.Feedback>
+                </Form.Group>
 
                 {loginMode && (
-                  <div className="form-group">
-                    <label htmlFor="customer-id" className="text-info">
+                  <Form.Group>
+                    <Form.Label htmlFor="customer-id" className="text-info">
                       Customer ID:
-                    </label>
-                    <br />
-                    <input
+                    </Form.Label>
+                    <Form.Control
                       type="password"
-                      name="customer-id"
-                      id="customer-id"
                       value={customerId}
-                      className="form-control"
+                      placeholder="Enter Customer ID"
                       onChange={({ target: { value } }) => setCustomerId(value)}
+                      isInvalid={!!errors.customerId}
                     />
-                  </div>
+                    <Form.Control.Feedback type="invalid">
+                      {errors.customerId}
+                    </Form.Control.Feedback>
+                  </Form.Group>
                 )}
 
                 <div className="bottom-row-auth">
-                  <button
-                    type="button"
-                    className="btn login-button"
-                    data-dismiss="modal"
-                    onClick={handleSubmit}
-                  >
+                  <Button onClick={handleSubmit} className="login-button">
                     {pageText}
-                  </button>
+                  </Button>
 
                   <a href={`/${optionRoute}`} className="text-info">
                     {optionButtonText}
                   </a>
                 </div>
-              </form>
+              </Form>
             </div>
           </div>
         </div>
       </div>
-      {message && (
-        <Modal
-          message={message}
-          modalButtons={modalButtons}
-          onClose={() => setMessage(null)}
-          title="Success"
-        />
-      )}
+      <AppModal
+        show={!!message}
+        message={message}
+        modalButtons={modalButtons}
+        onClose={() => setMessage(null)}
+        title="Success"
+      />
     </div>
   );
 };

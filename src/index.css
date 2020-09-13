@@ -24,10 +24,12 @@ body {
   max-width: 600px;
   border: 1px solid #9c9c9c;
   background-color: #eaeaea;
+  padding: 20px;
 }
 #login .container #login-row #login-column #login-box #login-form {
   padding: 20px;
 }
+
 #login
   .container
   #login-row
@@ -49,6 +51,7 @@ body {
 .login-button {
   background-color: #7d6959 !important;
   color: #fff;
+  border-color: #7d6959 !important;
 }
 
 .login-button:hover {
