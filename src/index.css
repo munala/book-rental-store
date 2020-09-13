@@ -89,3 +89,7 @@ body > #root > div {
 .center-align {
   align-self: center;
 }
+
+.page-not-found {
+  margin: 50px auto;
+}
