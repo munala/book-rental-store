@@ -13,10 +13,8 @@ const BooksComponent = ({ books, loadBooks, search }) => {
   const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
-    if (!books.length) {
-      loadBooks();
-    }
-  }, [loadBooks, books]);
+    loadBooks();
+  }, []);
 
   useEffect(() => {
     if (!cart.length && showCart) {
@@ -32,7 +30,7 @@ const BooksComponent = ({ books, loadBooks, search }) => {
     } else if (!books.length) {
       search({});
     }
-  }, [searchTerm, search]);
+  }, [searchTerm]);
 
   const checkInCart = bookId => {
     return cart.some(item => item.id === bookId);

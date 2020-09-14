@@ -17,7 +17,7 @@ const CustomerContainer = () => {
     if (customer?.id && !message) {
       history.push("books");
     }
-  }, [customer, message, history]);
+  }, [customer, message]);
 
   const login = async customerData => {
     setLoading(true);
