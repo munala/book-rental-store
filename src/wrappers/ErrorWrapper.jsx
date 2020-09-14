@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { ToastContainer, toast } from "react-toastify";
 import useError from "../hooks/useError";
@@ -7,8 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 const ErrorWrapper = props => {
   const { error, setError } = useError();
 
+  const [stateError, setStateError] = useState(null);
+
   useEffect(() => {
-    if (error) {
+    if (error !== stateError) {
+      setStateError(error);
       toast.error(error, {
         position: "bottom-center",
         hideProgressBar: false,
@@ -19,7 +22,7 @@ const ErrorWrapper = props => {
         onClose: () => setError(null)
       });
     }
-  }, [error, setError]);
+  }, [error, setError, stateError, setStateError]);
 
   return (
     <>

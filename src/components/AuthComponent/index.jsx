@@ -18,18 +18,22 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
 
   // clear email error
   useEffect(() => {
-    // eslint-disable-next-line no-unused-vars
-    const { email: emailError, ...otherErrors } = errors;
+    if (errors.email) {
+      // eslint-disable-next-line no-unused-vars
+      const { email: emailError, ...otherErrors } = errors;
 
-    setErrors({ ...otherErrors });
+      setErrors({ ...otherErrors });
+    }
   }, [email, errors]);
 
   // clear customer id error
   useEffect(() => {
-    // eslint-disable-next-line no-unused-vars
-    const { customerId: customerIdError, ...otherErrors } = errors;
+    if (errors.customerId) {
+      // eslint-disable-next-line no-unused-vars
+      const { customerId: customerIdError, ...otherErrors } = errors;
 
-    setErrors({ ...otherErrors });
+      setErrors({ ...otherErrors });
+    }
   }, [customerId, errors]);
 
   const modalButtons = [
