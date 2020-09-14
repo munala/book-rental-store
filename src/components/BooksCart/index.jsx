@@ -4,10 +4,18 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import {
-  DAILY_RENTAL,
   REGULAR_RENTAL,
   FICTION_RENTAL,
-  NOVEL_RENTAL
+  NOVEL_RENTAL,
+  REGULAR_MINIMUM_RENTAL,
+  REGULAR_MINIMUM_DAYS,
+  NOVEL_MINIMUM_RENTAL,
+  NOVEL_MINIMUM_DAYS,
+  FICTION_MINIMUM_RENTAL,
+  FICTION_MINIMUM_DAYS,
+  REGULAR_AFTER_MINIMUM_RENTAL,
+  FICTION_AFTER_MINIMUM_RENTAL,
+  NOVEL_AFTER_MINIMUM_RENTAL
 } from "../../constants/rentals";
 import "./styles.css";
 
@@ -21,18 +29,31 @@ const BooksCart = ({ cart, removeFromCart, clearCart, hide }) => {
     novel: NOVEL_RENTAL
   };
 
+  const rentalMinimumMappings = {
+    regular: REGULAR_MINIMUM_RENTAL,
+    fiction: FICTION_MINIMUM_RENTAL,
+    novel: NOVEL_MINIMUM_RENTAL
+  };
+
+  const rentalAfterMinimumMappings = {
+    regular: REGULAR_AFTER_MINIMUM_RENTAL,
+    fiction: FICTION_AFTER_MINIMUM_RENTAL,
+    novel: NOVEL_AFTER_MINIMUM_RENTAL
+  };
+
+  const rentalMinimumDaysMappings = {
+    regular: REGULAR_MINIMUM_DAYS,
+    fiction: FICTION_MINIMUM_DAYS,
+    novel: NOVEL_MINIMUM_DAYS
+  };
+
   useEffect(() => {
     prcoessCartItems();
   }, [cart]);
 
   useEffect(() => {
     const totalAmount = cartItems.reduce(
-      (previousTotal, item) =>
-        previousTotal +
-        item.duration *
-          item.quantity *
-          rentalMappings[item.genre] *
-          DAILY_RENTAL,
+      (previousTotal, item) => previousTotal + calculateRental(item),
       0
     );
 
@@ -68,6 +89,34 @@ const BooksCart = ({ cart, removeFromCart, clearCart, hide }) => {
 
     setCartItems(newCartItems);
   }, [cartItems]);
+
+  const calculateRental = item => {
+    let totalCharge = 0;
+
+    const numberOfDaysBeforeExtraCharge = rentalMinimumDaysMappings[item.genre];
+
+    // normal charge before minimum number of days
+    const chargesForMinimumDays =
+      rentalMappings[item.genre] *
+      item.quantity *
+      numberOfDaysBeforeExtraCharge;
+
+    // check if normal charge is greater than minimim otherwise use minimum
+    totalCharge +=
+      chargesForMinimumDays > rentalMinimumMappings[item.genre]
+        ? chargesForMinimumDays
+        : rentalMinimumMappings[item.genre];
+
+    // check if duration has exceeded minimum than add additional charges for extra days
+    if (item.duration > numberOfDaysBeforeExtraCharge) {
+      const extraDays = item.duration - numberOfDaysBeforeExtraCharge;
+      const extraCharge = extraDays * rentalAfterMinimumMappings[item.genre];
+
+      totalCharge += extraCharge;
+    }
+
+    return totalCharge;
+  };
 
   return (
     <div>
