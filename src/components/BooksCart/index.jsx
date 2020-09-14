@@ -3,12 +3,23 @@ import PropTypes from "prop-types";
 import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { DAILY_RENTAL } from "../../constants/rentals";
+import {
+  DAILY_RENTAL,
+  REGULAR_RENTAL,
+  FICTION_RENTAL,
+  NOVEL_RENTAL
+} from "../../constants/rentals";
 import "./styles.css";
 
 const BooksCart = ({ cart, removeFromCart, clearCart, hide }) => {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
+
+  const rentalMappings = {
+    regular: REGULAR_RENTAL,
+    fiction: FICTION_RENTAL,
+    novel: NOVEL_RENTAL
+  };
 
   useEffect(() => {
     prcoessCartItems();
@@ -17,7 +28,11 @@ const BooksCart = ({ cart, removeFromCart, clearCart, hide }) => {
   useEffect(() => {
     const totalAmount = cartItems.reduce(
       (previousTotal, item) =>
-        previousTotal + item.duration * item.quantity * DAILY_RENTAL,
+        previousTotal +
+        item.duration *
+          item.quantity *
+          rentalMappings[item.genre] *
+          DAILY_RENTAL,
       0
     );
 
