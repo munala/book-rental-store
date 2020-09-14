@@ -12,6 +12,7 @@ const ErrorWrapper = props => {
   useEffect(() => {
     if (error !== stateError) {
       setStateError(error);
+
       toast.error(error, {
         position: "bottom-center",
         hideProgressBar: false,

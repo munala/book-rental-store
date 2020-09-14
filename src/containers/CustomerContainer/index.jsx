@@ -27,11 +27,9 @@ const CustomerContainer = () => {
 
       if (loggenInCustomer) {
         setCustomer(loggenInCustomer);
-
-        return;
+      } else {
+        setError("Wrong email and/or customer ID.");
       }
-
-      setError("Wrong email and/or customer ID.");
     } catch (error) {
       setError(error);
     } finally {
