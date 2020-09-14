@@ -22,7 +22,7 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
     const { email: emailError, ...otherErrors } = errors;
 
     setErrors({ ...otherErrors });
-  }, [email]);
+  }, [email, errors]);
 
   // clear customer id error
   useEffect(() => {
@@ -30,7 +30,7 @@ const AuthComponent = ({ loginMode, message, setMessage, onSubmit }) => {
     const { customerId: customerIdError, ...otherErrors } = errors;
 
     setErrors({ ...otherErrors });
-  }, [customerId]);
+  }, [customerId, errors]);
 
   const modalButtons = [
     {

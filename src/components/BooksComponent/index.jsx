@@ -14,13 +14,13 @@ const BooksComponent = ({ books, loadBooks, search }) => {
 
   useEffect(() => {
     loadBooks();
-  }, []);
+  }, [loadBooks]);
 
   useEffect(() => {
     if (!cart.length && showCart) {
       setShowCart(false);
     }
-  }, [cart]);
+  }, [cart, showCart]);
 
   useEffect(() => {
     if (searchTerm) {
@@ -30,7 +30,7 @@ const BooksComponent = ({ books, loadBooks, search }) => {
     } else {
       search({});
     }
-  }, [searchTerm]);
+  }, [searchTerm, search]);
 
   const checkInCart = bookId => {
     return cart.some(item => item.id === bookId);
