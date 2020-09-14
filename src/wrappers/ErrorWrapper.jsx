@@ -19,7 +19,7 @@ const ErrorWrapper = props => {
         onClose: () => setError(null)
       });
     }
-  }, [error]);
+  }, [error, setError]);
 
   return (
     <>

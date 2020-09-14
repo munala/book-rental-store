@@ -48,8 +48,8 @@ const BooksCart = ({ cart, removeFromCart, clearCart, hide }) => {
   };
 
   useEffect(() => {
-    prcoessCartItems();
-  }, [cart]);
+    processCartItems();
+  }, [cart, processCartItems]);
 
   useEffect(() => {
     const totalAmount = cartItems.reduce(
@@ -58,7 +58,7 @@ const BooksCart = ({ cart, removeFromCart, clearCart, hide }) => {
     );
 
     setTotal(totalAmount);
-  }, [cartItems]);
+  }, [cartItems, setTotal, calculateRental]);
 
   const changeValue = ({ item, property, value }) => {
     const newCartItems = cartItems.map(cartItem => {
@@ -74,7 +74,7 @@ const BooksCart = ({ cart, removeFromCart, clearCart, hide }) => {
   };
 
   // add quantity and number of days, default 1
-  const prcoessCartItems = useCallback(() => {
+  const processCartItems = useCallback(() => {
     const newCartItems = cart.map(item => {
       const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
 
@@ -88,7 +88,7 @@ const BooksCart = ({ cart, removeFromCart, clearCart, hide }) => {
     });
 
     setCartItems(newCartItems);
-  }, [cartItems]);
+  }, [cartItems, cart]);
 
   const calculateRental = item => {
     let totalCharge = 0;
