@@ -9,7 +9,6 @@ import ProtectedRoute from "../wrappers/ProtectedRoute";
 import BooksPage from "../pages/Books";
 import RegisterPage from "../pages/Register";
 import LoginPage from "../pages/Login";
-import RentPage from "../pages/Rent";
 import PageNotFoundPage from "../pages/PageNotFound";
 
 const Routes = () => {
@@ -20,7 +19,6 @@ const Routes = () => {
         <Route path="/login" component={LoginPage} exact />
 
         <ProtectedRoute path="/books" Component={BooksPage} exact />
-        <ProtectedRoute path="/rent" Component={RentPage} exact />
         <Route path="/" render={() => <Redirect to="/books" />} exact />
         <Route component={PageNotFoundPage} />
       </Switch>

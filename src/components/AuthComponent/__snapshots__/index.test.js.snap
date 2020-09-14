@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthComponent tests should render 1`] = `
+<div
+  id="login"
+>
+  <h3
+    className="text-center text-white pt-5"
+  >
+    Book Rental Store
+  </h3>
+  <div
+    className="container"
+  >
+    <div
+      className="row justify-content-center align-items-center"
+      id="login-row"
+    >
+      <div
+        className="col-md-6"
+        id="login-column"
+      >
+        <div
+          id="login-box"
+        >
+          <form
+            className=""
+          >
+            <h3
+              className="text-center text-info"
+            >
+              Login
+            </h3>
+            <div
+              className="form-group"
+            >
+              <label
+                className="text-info form-label"
+                htmlFor="email"
+              >
+                Email:
+              </label>
+              <input
+                className="form-control"
+                onChange={[Function]}
+                placeholder="Enter email"
+                type="email"
+                value=""
+              />
+              <div
+                className="invalid-feedback"
+              />
+            </div>
+            <div
+              className="form-group"
+            >
+              <label
+                className="text-info form-label"
+                htmlFor="customer-id"
+              >
+                Customer ID:
+              </label>
+              <input
+                className="form-control"
+                onChange={[Function]}
+                placeholder="Enter Customer ID"
+                type="password"
+                value=""
+              />
+              <div
+                className="invalid-feedback"
+              />
+            </div>
+            <div
+              className="bottom-row-auth"
+            >
+              <button
+                className="login-button btn btn-primary"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Login
+              </button>
+              <a
+                className="text-info"
+                href="/register"
+                onClick={[Function]}
+              >
+                Register
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

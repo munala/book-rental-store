@@ -17,13 +17,3 @@ export const getAllBooksList = async (bookParams = {}) => {
     throw new Error(error.response?.data?.message || error.message);
   }
 };
-
-export const getSingleBook = async id => {
-  try {
-    const { data } = await instance.get(`/books/${id}`);
-
-    return data;
-  } catch (error) {
-    throw new Error(error.response?.data?.message || error.message);
-  }
-};

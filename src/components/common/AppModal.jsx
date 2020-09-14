@@ -7,7 +7,7 @@ const AppModal = props => {
   const { title, buttons, onClose, message, children, show } = props;
 
   return (
-    <Modal animation={false} show={show} onHide={onClose}>
+    <Modal id="app-modal" animation={false} show={show} onHide={onClose}>
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
@@ -17,6 +17,7 @@ const AppModal = props => {
       <Modal.Footer>
         {buttons?.map((button, index) => (
           <Button
+            id={button.text}
             key={index}
             variant={button.color || "primary"}
             onClick={button.action}

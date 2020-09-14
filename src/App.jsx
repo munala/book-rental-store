@@ -36,21 +36,23 @@ const App = () => {
   const [books, booksDispatch] = useReducer(booksReducer, initialBooksState);
 
   return (
-    <CustomerContext.Provider value={{ customer, customerDispatch }}>
-      <ErrorContext.Provider value={{ error, errorDispatch }}>
-        <LoadingContext.Provider value={{ loading, loadingDispatch }}>
-          <BooksContext.Provider value={{ books, booksDispatch }}>
-            <div className="App container">
-              <ErrorWrapper>
-                <LoadingWrapper>
-                  <Routes />
-                </LoadingWrapper>
-              </ErrorWrapper>
-            </div>
-          </BooksContext.Provider>
-        </LoadingContext.Provider>
-      </ErrorContext.Provider>
-    </CustomerContext.Provider>
+    <div id="App">
+      <CustomerContext.Provider value={{ customer, customerDispatch }}>
+        <ErrorContext.Provider value={{ error, errorDispatch }}>
+          <LoadingContext.Provider value={{ loading, loadingDispatch }}>
+            <BooksContext.Provider value={{ books, booksDispatch }}>
+              <div className="App container">
+                <ErrorWrapper>
+                  <LoadingWrapper>
+                    <Routes />
+                  </LoadingWrapper>
+                </ErrorWrapper>
+              </div>
+            </BooksContext.Provider>
+          </LoadingContext.Provider>
+        </ErrorContext.Provider>
+      </CustomerContext.Provider>
+    </div>
   );
 };
 
