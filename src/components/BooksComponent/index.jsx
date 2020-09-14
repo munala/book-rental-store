@@ -24,7 +24,9 @@ const BooksComponent = ({ books, loadBooks, search }) => {
 
   useEffect(() => {
     if (searchTerm) {
-      search({ title: searchTerm });
+      search({
+        title: searchTerm
+      });
     } else {
       search({});
     }
