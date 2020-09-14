@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #7d6959;
+  height: 100vh;
+}
+
+.bg-custom {
+  background-color: #907f71 !important;
+}
+
+.align-center-horizontal {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body > #root > div {
+  height: 100vh;
+}
+
+.books-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.btn-primary,
+.badge-primary {
+  outline: none;
+  color: #fff;
+  background-color: #7d6959;
+  border-color: #7d6959;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  outline: none;
+  color: #fff;
+  background-color: #7d6959;
+  border-color: #7d6959;
+}
+
+.btn-outline-primary {
+  outline: none;
+  background-color: #eaeaea;
+  border-color: #7d6959;
+  color: #7d6959;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  outline: none;
+  background-color: #eaeaea;
+  border-color: #7d6959;
+  color: #7d6959;
+}
+
+.btn-secondary,
+.badge-secondary {
+  outline: none;
+  color: #7d6959;
+  background-color: #eaeaea;
+  border-color: #eaeaea;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  outline: none;
+  color: #7d6959;
+  background-color: #eaeaea;
+  border-color: #eaeaea;
+}
+
+.center-align {
+  align-self: center;
+}
+
+.page-not-found {
+  margin: 50px auto;
+}

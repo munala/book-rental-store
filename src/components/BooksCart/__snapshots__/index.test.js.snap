@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BooksCart tests should render 1`] = `
+<div>
+  <div
+    className="cart-list-container"
+  >
+    <ul
+      className="cart-list list-group"
+      onKeyDown={[Function]}
+    >
+      <li
+        className="cart-list-item cart-list-item-select list-group-item"
+        data-rb-event-key={null}
+        disabled={false}
+        onClick={[Function]}
+      >
+        <div
+          className="cart-list-title"
+        />
+        <div
+          className="cart-list-item-right"
+        >
+          <div
+            className="cart-list-count"
+          >
+            Books X
+          </div>
+          <div
+            className="cart-list-count"
+          >
+            <div
+              className="cart-list-count-value"
+            >
+              Days X
+            </div>
+          </div>
+          <button
+            className="btn btn-primary center-align cart-button"
+            disabled={false}
+            onClick={[MockFunction]}
+            type="button"
+          >
+            Add More Books
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div
+    className="totals-row"
+  >
+    <div
+      className="totals-row-left"
+    >
+      <span
+        className="totals-row-title"
+      >
+        Total: 
+      </span>
+      <span
+        className="totals-row-value"
+      >
+        $
+        0
+      </span>
+    </div>
+    <button
+      className="btn btn-primary center-align cart-button"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Done
+    </button>
+  </div>
+</div>
+`;

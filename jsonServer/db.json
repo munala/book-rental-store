@@ -1,0 +1,297 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "email": "munalaoliverngoitsi@gmail.com"
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 2
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 3
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 4
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 5
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 6
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 7
+    },
+    {
+      "email": "",
+      "id": 8
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 9
+    },
+    {
+      "email": "munalaoliver",
+      "id": 10
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 11
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 12
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 13
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 14
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 15
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 16
+    },
+    {
+      "email": "munalaoliverngoitsi@gmail.com",
+      "id": 17
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "title": "Jurassic Park",
+      "author": "Michael Crichton",
+      "genre": "action"
+    },
+    {
+      "id": 2,
+      "title": "The Hobbit, or There and Back Again",
+      "author": "Michael Crichton",
+      "genre": "action"
+    },
+    {
+      "id": 3,
+      "title": "The Hunger Games",
+      "author": "Michael Crichton",
+      "genre": "action"
+    },
+    {
+      "id": 4,
+      "title": "The Fellowship of the Ring",
+      "author": "Michael Crichton",
+      "genre": "action"
+    },
+    {
+      "id": 5,
+      "title": "The Da Vinci Code",
+      "author": "Michael Crichton",
+      "genre": "action"
+    },
+    {
+      "id": 6,
+      "title": "Jurassic Park",
+      "author": "Noelle Stevenson",
+      "genre": "comic"
+    },
+    {
+      "id": 7,
+      "title": "Watchmen",
+      "author": "Alan Moore and Dave Gibbons",
+      "genre": "comic"
+    },
+    {
+      "id": 8,
+      "title": "The Hunger Games",
+      "author": "Michael Crichton",
+      "genre": "comic"
+    },
+    {
+      "id": 9,
+      "title": "Maus: A Survivors Tale",
+      "author": "Art Spiegelman",
+      "genre": "comic"
+    },
+    {
+      "id": 10,
+      "title": "Daytripper",
+      "author": "Gabriel Ba and Fabio Moon",
+      "genre": "comic"
+    },
+    {
+      "id": 11,
+      "title": "Grant",
+      "author": "Ron Chernow",
+      "genre": "history"
+    },
+    {
+      "id": 12,
+      "title": "Guns, Germs, and Steel: The Fate of Human Societies",
+      "author": "Jared Diamond",
+      "genre": "history"
+    },
+    {
+      "id": 13,
+      "title": "Genghis Khan and the Making of the Modern World",
+      "author": "Jack Weatherford",
+      "genre": "history"
+    },
+    {
+      "id": 14,
+      "title": "Leningrad: The Epic Siege of World War II, 1941-1944",
+      "author": "Anna Reid",
+      "genre": "history"
+    },
+    {
+      "id": 15,
+      "title": "Embers of War: The Fall of an Empire and the Making of America's Vietnam",
+      "author": "Fredrik Logevall",
+      "genre": "history"
+    },
+    {
+      "id": 16,
+      "title": "The Three-Body Problem",
+      "author": "Liu Cixin",
+      "genre": "science fiction"
+    },
+    {
+      "id": 17,
+      "title": "Kindred",
+      "author": "Octavia E. Butler",
+      "genre": "science fiction"
+    },
+    {
+      "id": 18,
+      "title": "The Blazing World",
+      "author": "Margaret Cavendish",
+      "genre": "science fiction"
+    },
+    {
+      "id": 19,
+      "title": "Frankenstein",
+      "author": "Mary Shelley",
+      "genre": "science fiction"
+    },
+    {
+      "id": 20,
+      "title": "Foundation",
+      "author": "Isaac Asimov",
+      "genre": "science fiction"
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "name": "Michael Crichton"
+    },
+    {
+      "id": 2,
+      "name": "Michael Crichton"
+    },
+    {
+      "id": 3,
+      "name": "Michael Crichton"
+    },
+    {
+      "id": 4,
+      "name": "Michael Crichton"
+    },
+    {
+      "id": 5,
+      "name": "Michael Crichton"
+    },
+    {
+      "id": 6,
+      "name": "Noelle Stevenson"
+    },
+    {
+      "id": 7,
+      "name": "Alan Moore and Dave Gibbons"
+    },
+    {
+      "id": 8,
+      "name": "Michael Crichton"
+    },
+    {
+      "id": 9,
+      "name": "Art Spiegelman"
+    },
+    {
+      "id": 10,
+      "name": "Gabriel Ba and Fabio Moon"
+    },
+    {
+      "id": 11,
+      "name": "Ron Chernow"
+    },
+    {
+      "id": 12,
+      "name": "Jared Diamond"
+    },
+    {
+      "id": 13,
+      "name": "Jack Weatherford"
+    },
+    {
+      "id": 14,
+      "name": "Anna Reid"
+    },
+    {
+      "id": 15,
+      "name": "Fredrik Logevall"
+    },
+    {
+      "id": 16,
+      "name": "Liu Cixin"
+    },
+    {
+      "id": 17,
+      "name": "Octavia E. Butler"
+    },
+    {
+      "id": 18,
+      "name": "Margaret Cavendish"
+    },
+    {
+      "id": 19,
+      "name": "Mary Shelley"
+    },
+    {
+      "id": 20,
+      "name": "Isaac Asimov"
+    }
+  ],
+  "genres": [
+    {
+      "id": 1,
+      "name": "action"
+    },
+    {
+      "id": 2,
+      "name": "comic"
+    },
+    {
+      "id": 3,
+      "name": "history"
+    },
+    {
+      "id": 4,
+      "name": "science fiction"
+    }
+  ],
+  "rent": {
+    "daily": 1
+  }
+}

@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BooksComponent tests should render 1`] = `
+<div
+  className="books-container"
+>
+  <div
+    className="top-row"
+  >
+    <input
+      aria-label="search"
+      className="search-input form-control"
+      onChange={[Function]}
+      placeholder="start typing to search"
+      value=""
+    />
+    <button
+      className="btn btn-secondary cart-button"
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      View Cart
+      <span
+        className="badge badge-primary"
+      >
+        
+      </span>
+      <span
+        className="sr-only"
+      >
+        unread messages
+      </span>
+    </button>
+  </div>
+  <div
+    className="books-list-container"
+  >
+    <ul
+      className="books-list list-group"
+      onKeyDown={[Function]}
+    >
+      <li
+        className="books-list-item books-list-last-item  list-group-item"
+        data-rb-event-key={null}
+        disabled={false}
+        onClick={[Function]}
+      >
+        <div>
+          <div
+            className="books-list-title"
+          >
+            Jurassic Park
+          </div>
+          <div
+            className="books-list-detail"
+          >
+            <i
+              className="books-list-detail-header"
+            >
+              by
+            </i>
+             
+            <span
+              className="books-list-detail-value"
+            >
+              Michael Crichton
+            </span>
+          </div>
+          <div
+            className="books-list-detail"
+          >
+            <i
+              className="books-list-detail-header"
+            >
+              under
+            </i>
+             
+            <span
+              className="books-list-detail-value"
+            >
+              action
+            </span>
+          </div>
+        </div>
+        <button
+          className="btn btn-primary center-align"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          + Add to Cart
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
