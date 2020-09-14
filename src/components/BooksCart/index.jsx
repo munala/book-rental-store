@@ -47,32 +47,6 @@ const BooksCart = ({ cart, removeFromCart, clearCart, hide }) => {
     novel: NOVEL_MINIMUM_DAYS
   };
 
-  useEffect(() => {
-    processCartItems();
-  }, [cart, processCartItems]);
-
-  useEffect(() => {
-    const totalAmount = cartItems.reduce(
-      (previousTotal, item) => previousTotal + calculateRental(item),
-      0
-    );
-
-    setTotal(totalAmount);
-  }, [cartItems, setTotal, calculateRental]);
-
-  const changeValue = ({ item, property, value }) => {
-    const newCartItems = cartItems.map(cartItem => {
-      return cartItem.id === item.id
-        ? {
-            ...cartItem,
-            [property]: value < 0 ? 0 : value
-          }
-        : cartItem;
-    });
-
-    setCartItems(newCartItems);
-  };
-
   // add quantity and number of days, default 1
   const processCartItems = useCallback(() => {
     const newCartItems = cart.map(item => {
@@ -88,34 +62,64 @@ const BooksCart = ({ cart, removeFromCart, clearCart, hide }) => {
     });
 
     setCartItems(newCartItems);
-  }, [cartItems, cart]);
+  }, [cart]);
 
-  const calculateRental = item => {
-    let totalCharge = 0;
+  const calculateRental = useCallback(
+    item => {
+      let totalCharge = 0;
 
-    const numberOfDaysBeforeExtraCharge = rentalMinimumDaysMappings[item.genre];
+      const numberOfDaysBeforeExtraCharge =
+        rentalMinimumDaysMappings[item.genre];
 
-    // normal charge before minimum number of days
-    const chargesForMinimumDays =
-      rentalMappings[item.genre] *
-      item.quantity *
-      numberOfDaysBeforeExtraCharge;
+      // normal charge before minimum number of days
+      const chargesForMinimumDays =
+        rentalMappings[item.genre] *
+        item.quantity *
+        numberOfDaysBeforeExtraCharge;
 
-    // check if normal charge is greater than minimim otherwise use minimum
-    totalCharge +=
-      chargesForMinimumDays > rentalMinimumMappings[item.genre]
-        ? chargesForMinimumDays
-        : rentalMinimumMappings[item.genre];
+      // check if normal charge is greater than minimim otherwise use minimum
+      totalCharge +=
+        chargesForMinimumDays > rentalMinimumMappings[item.genre]
+          ? chargesForMinimumDays
+          : rentalMinimumMappings[item.genre];
 
-    // check if duration has exceeded minimum than add additional charges for extra days
-    if (item.duration > numberOfDaysBeforeExtraCharge) {
-      const extraDays = item.duration - numberOfDaysBeforeExtraCharge;
-      const extraCharge = extraDays * rentalAfterMinimumMappings[item.genre];
+      // check if duration has exceeded minimum than add additional charges for extra days
+      if (item.duration > numberOfDaysBeforeExtraCharge) {
+        const extraDays = item.duration - numberOfDaysBeforeExtraCharge;
+        const extraCharge = extraDays * rentalAfterMinimumMappings[item.genre];
 
-      totalCharge += extraCharge;
-    }
+        totalCharge += extraCharge;
+      }
 
-    return totalCharge;
+      return totalCharge;
+    },
+    [cartItems]
+  );
+
+  useEffect(() => {
+    processCartItems();
+  }, [cart, processCartItems]);
+
+  useEffect(() => {
+    const totalAmount = cartItems.reduce(
+      (previousTotal, item) => previousTotal + calculateRental(item),
+      0
+    );
+
+    setTotal(totalAmount);
+  }, [cartItems, setTotal]);
+
+  const changeValue = ({ item, property, value }) => {
+    const newCartItems = cartItems.map(cartItem => {
+      return cartItem.id === item.id
+        ? {
+            ...cartItem,
+            [property]: value < 0 ? 0 : value
+          }
+        : cartItem;
+    });
+
+    setCartItems(newCartItems);
   };
 
   return (
